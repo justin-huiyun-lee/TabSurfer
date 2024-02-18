@@ -28,7 +28,7 @@ const Workspaces = ({ data }) => {
   }
 
   return (
-    <div className="flex h-full w-full scale-90 flex-col rounded-2xl border px-4 shadow-lg">
+    <div className="-mt-4 flex h-full w-full scale-90 flex-col rounded-2xl border px-4 shadow-lg">
       <div className="mt-4 flex justify-between">
         <h1 className="ml-2 flex-grow p-4 text-3xl font-medium">
           {data[activeIndex]?.title}
