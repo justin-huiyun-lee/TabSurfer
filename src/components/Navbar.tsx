@@ -20,7 +20,7 @@ const Navbar = () => {
         </h1>
       </div>
       <div className="mr-12 cursor-pointer rounded-md bg-black px-4 py-3 font-bold text-white duration-300 hover:scale-105">
-        <Link href="/login" className="">
+        <Link href="/login" >
           Login
         </Link>
       </div>
