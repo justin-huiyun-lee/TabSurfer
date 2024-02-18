@@ -28,7 +28,7 @@ const Workspaces = ({ data }) => {
   }
 
   return (
-    <div className="flex h-full w-full scale-90 flex-col rounded-2xl border p-4 shadow-lg">
+    <div className="flex h-full w-full scale-90 flex-col rounded-2xl border px-4 shadow-lg">
       <div className="mt-4 flex justify-between">
         <h1 className="ml-2 flex-grow p-4 text-3xl font-medium">
           {data[activeIndex]?.title}
@@ -62,7 +62,7 @@ const Workspaces = ({ data }) => {
           </React.Fragment>
         ))}
       </div>
-      <form onSubmit={formSubmit}>
+      <form onSubmit={formSubmit} className="mb-4">
         <div className="flex flex-row">
           <Input
             type="text"
