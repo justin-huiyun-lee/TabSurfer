@@ -23,14 +23,32 @@ body {
   }
 }
 
+.wiggler {
+  animation: wiggle 1s infinite;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
 /**********************************************
 ********************* Font ********************
 ***********************************************/
 
 #title {
   font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 /**********************************************

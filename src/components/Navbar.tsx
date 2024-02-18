@@ -15,7 +15,7 @@ const Navbar = () => {
         />
       </div>
       <div>
-        <h1 className="cursor-pointer text-3xl font-light duration-300 hover:scale-105">
+        <h1 id="title">
           TabSurfer
         </h1>
       </div>
