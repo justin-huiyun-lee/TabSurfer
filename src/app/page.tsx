@@ -61,7 +61,7 @@ export default function Home() {
 
   function openMultipleURLs(urls) {
     urls.reverse().forEach(function (url) {
-      window.open("https://www." + url);
+      window.open(url);
     });
   }
 
@@ -73,13 +73,18 @@ export default function Home() {
 
   function formSubmit(e) {
   e.preventDefault();
+  let tempUrl = url;
   if (!url.startsWith("https://www.")) {
-    setUrl("https://www." + url);
+    tempUrl = "https://www." + url;
   }
   const newData = [...data];
-  newData[selectedItem].urls.push(url);
+  newData[selectedItem].urls.push(tempUrl);
+  
   setData(newData);
   setUrl("");
+  e.value = "";
+  console.log(newData[selectedItem].urls);
+  document.getElementById("formStuff").value = "";
 }
 
   function getDisplayURL(url) {
@@ -215,6 +220,7 @@ export default function Home() {
                 <Input
                   type="text"
                   placeholder="+ Add a url"
+                  id="formStuff"
                   onChange={handleUrlChange}
                   className="ml-12 w-[70vw] border-black"
                 />
