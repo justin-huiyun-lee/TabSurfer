@@ -17,12 +17,12 @@ let data = [
   {
     title: "Math",
     urls: ["https://www.khanacademy.org/math", "https://google.com"],
-    active: false,
+    active: true,
   },
   {
     title: "Science",
     urls: ["https://www.khanacademy.org/science"],
-    active: true,
+    active: false,
   },
   {
     title: "Computer Science",

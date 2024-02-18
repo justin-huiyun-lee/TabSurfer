@@ -15,12 +15,10 @@ const Sidebar = ({ data }) => {
     // Set the selected item
     setSelectedItem(index);
     // Update the 'active' status of items
-    const newData = updatedData.map((item, i) => ({
-      ...item,
-      active: i === index ? true : false,
-    }));
-    // Update the state with the new data
-    setUpdatedData(newData);
+    data.map(() => (data.active = false));
+
+    data[index].active = true;
+    
     Workspaces(data);
   };
 

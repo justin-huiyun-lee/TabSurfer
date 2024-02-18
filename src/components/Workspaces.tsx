@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { TbExternalLink } from "react-icons/tb";
 import { FaRegTrashCan } from "react-icons/fa6";
 
-const Workspaces = ({ data }) => {
+export default function Workspaces({ data }) {
   const [url, setUrl] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -112,4 +112,3 @@ const Workspaces = ({ data }) => {
   );
 };
 
-export default Workspaces;
