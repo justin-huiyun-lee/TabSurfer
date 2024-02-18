@@ -22,7 +22,7 @@ const Navbar = () => {
             ></path>
             Login
           </span>
-</button>
+        </button>
       </div>
     </div>
   );
