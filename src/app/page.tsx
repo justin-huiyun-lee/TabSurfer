@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { TbExternalLink } from "react-icons/tb";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
@@ -16,13 +16,13 @@ let active = "Math";
 let data = [
   {
     title: "Math",
-    urls: ["https://www.khanacademy.org/math", "google.com"],
-    active: true,
+    urls: ["https://www.khanacademy.org/math", "https://google.com"],
+    active: false,
   },
   {
     title: "Science",
     urls: ["https://www.khanacademy.org/science"],
-    active: false,
+    active: true,
   },
   {
     title: "Computer Science",

@@ -26,12 +26,6 @@ const Navbar = () => {
         >
           Log In
         </Link>
-        <Link
-          href="/register"
-          className="mr-5 cursor-pointer rounded-md border-2 border-black px-4 py-3 font-bold text-black duration-300 hover:bg-black hover:text-white"
-        >
-          Sign Up
-        </Link>
       </div>
     </div>
   );

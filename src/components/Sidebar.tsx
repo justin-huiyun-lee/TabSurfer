@@ -21,8 +21,30 @@ const Sidebar = ({ data }) => {
     }));
     // Update the state with the new data
     setUpdatedData(newData);
-    Workspaces(data, index);
+    Workspaces(data);
   };
+
+  function openMultipleURLs(urls) {
+    urls.reverse().forEach(function (url) {
+      window.open(url);
+    });
+  }
+
+  function addCategory(e) {
+    e.preventDefault();
+    
+    const newWorkspace = {
+        title: e.target.elements.addCategory.value, // Accessing input value
+        urls: [],
+        active: false
+    };
+
+    data.push(newWorkspace);
+
+    // Update the state with the new data
+    setUpdatedData(newData);
+    Workspaces(data);
+}
 
   return (
     <div className="flex h-screen w-1/4 flex-col justify-between border-r-2 bg-[#ededed] p-4">
@@ -40,15 +62,31 @@ const Sidebar = ({ data }) => {
               onClick={() => handleItemClick(index)}
             >
               {item.title}
-              <TbExternalLink className="pr-2 text-3xl text-gray-500 duration-300 hover:text-gray-50" />
+              <TbExternalLink 
+                className="mr-2 pr-2 text-3xl text-black duration-300 hover:text-gray-500 justify-right" 
+                onClick={() => {openMultipleURLs(data[index].urls)}}
+              />
             </div>
           ))}
         </div>
       </div>
       <div className="mb-24">
-        <button className="mb-4 w-full rounded bg-gray-300 text-3xl text-white duration-300 hover:scale-95">
-          +
-        </button>
+        <form onSubmit={addCategory}>
+            <div className="flex flex-row">
+                <button 
+                  className="mb-4 mr-2 w-[2.5vw] rounded bg-gray-800 text-3xl text-white duration-300 hover:scale-95"
+                  type="submit"
+                >
+                    +
+                </button>
+                <Input
+                    type="text"
+                    id="addCategory"
+                    placeholder="+ Add a workspace"
+                    className="w-[15vw] mb-4 border-black"
+                />
+            </div>
+        </form>
         <div className="mb-4 h-1 w-full place-self-center rounded-full bg-gray-300"></div>
         <div className="flex">
           <Skeleton className="h-12 min-w-12 rounded-full bg-gray-300" />
