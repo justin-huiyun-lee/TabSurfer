@@ -6,9 +6,9 @@ import Sidebar from "@/components/Sidebar";
 import Workspaces from "@/components/Workspaces";
 import Logo from "../../public/images/tabsurfer-logo.png";
 import Head from "next/head";
-import { Input } from "./ui/input";
+import { Input } from "../components/ui/input";
 import { BsSearch } from "react-icons/bs";
-import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "../components/ui/skeleton";
 import { UserButton } from "@clerk/nextjs";
 
 let active = "Math";
@@ -71,7 +71,13 @@ export default function Home() {
       <div>
         <Navbar />
         <div className="flex">
-          <Sidebar data={data} active={active} />
+          {/***********************************************
+           ***************** Sidebar ********************* 
+          ***********************************************/}
+          <Sidebar data={data} />
+          {/***********************************************
+           ***************** Workspaces *********************
+          ***********************************************/}
           <Workspaces data={data} />
         </div>
       </div>

@@ -12,6 +12,7 @@ const Workspaces = ({ data }) => {
     setActiveIndex(foundIndex !== -1 ? foundIndex : 0);
   }, [data]);
 
+
   return (
     <div className="h-full w-full">
       <div className="flex justify-between mt-4">
@@ -29,7 +30,7 @@ const Workspaces = ({ data }) => {
             </h3>
             <TbExternalLink className="mr-2 pr-2 text-3xl hover:text-black duration-300 text-gray-700 justify-right" />
           </div>
-          <div className="mt-4 h-1 w-full place-self-center rounded-full bg-gray-600"></div>
+          <div className="mt-4 h-1 w-full place-self-center rounded-full bg-gray-400"></div>
         </React.Fragment>
       ))}
     </div>
