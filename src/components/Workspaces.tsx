@@ -3,25 +3,19 @@ import { Input } from "./ui/input";
 import React, { useState, useEffect } from "react";
 import { TbExternalLink } from "react-icons/tb";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { AiFillYoutube } from "react-icons/ai";
 
 const Workspaces = ({ data }) => {
   const [url, setUrl] = useState("");
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleUrlChange = (e) => {
     setUrl(e.target.value);
   };
 
-  let activeIndex = 0;
-
   // Find the active workspace and update the index
   useEffect(() => {
     const foundIndex = data.findIndex((workspace) => workspace.active);
-    if (foundIndex !== -1) {
-      activeIndex = foundIndex;
-    } else {
-      activeIndex = 0;
-    }
+    setActiveIndex(foundIndex !== -1 ? foundIndex : 0);
   }, [data]);
 
   function openMultipleURLs(urls) {
@@ -30,16 +24,30 @@ const Workspaces = ({ data }) => {
     });
   }
 
+  function deleteElement(e, index) {
+    e.preventDefault();
+    const updatedUrls = [...data[activeIndex].urls];
+    updatedUrls.splice(index, 1);
+    data[activeIndex].urls = updatedUrls;
+  }
+
   function formSubmit(e) {
     e.preventDefault();
-    
+    if (!url.startsWith("https://www.")) {
+      setUrl("https://www." + url);
+    }
     data[activeIndex].urls.push(url);
     setUrl("");
   }
 
-  function deleteElement(e, index: number) {
-    e.preventDefault();
-    data[index].urls.pop(url);
+  function getDisplayURL(url) {
+    if (url.startsWith("https://www.")) {
+      return url.substring(12);
+    } else if (url.length > 50) {
+      return url.substring(0, 50) + "...";
+    } else {
+      return url;
+    }
   }
 
   return (
@@ -64,7 +72,7 @@ const Workspaces = ({ data }) => {
           <React.Fragment key={index}>
             <div className="my-4 flex">
               <h3 className="text-md ml-2 flex-grow font-medium text-gray-700 hover:text-black hover:underline">
-                {url}
+                {getDisplayURL(url)}
               </h3>
               <TbExternalLink
                 className="justify-right mr-2 cursor-pointer pr-2 text-3xl text-gray-700 duration-300 hover:text-black"
@@ -76,6 +84,7 @@ const Workspaces = ({ data }) => {
                 className="mr-2 cursor-pointer pr-2 text-3xl text-red-400 duration-300 hover:text-red-800"
                 onClick={(e) => {
                   deleteElement(e, index);
+                  handleUrlChange(e);
                 }}
               />
             </div>
