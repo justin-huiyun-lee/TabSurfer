@@ -32,11 +32,11 @@ const Sidebar = ({ data }) => {
 
   function addCategory(e) {
     e.preventDefault();
-    
+
     const newWorkspace = {
-        title: e.target.elements.addCategory.value, // Accessing input value
-        urls: [],
-        active: false
+      title: e.target.elements.addCategory.value, // Accessing input value
+      urls: [],
+      active: false,
     };
 
     data.push(newWorkspace);
@@ -44,7 +44,7 @@ const Sidebar = ({ data }) => {
     // Update the state with the new data
     setUpdatedData(newData);
     Workspaces(data);
-}
+  }
 
   return (
     <div className="flex h-screen w-1/4 flex-col justify-between border-r-2 bg-[#ededed] p-4">
@@ -62,9 +62,11 @@ const Sidebar = ({ data }) => {
               onClick={() => handleItemClick(index)}
             >
               {item.title}
-              <TbExternalLink 
-                className="mr-2 pr-2 text-3xl text-black duration-300 hover:text-gray-500 justify-right" 
-                onClick={() => {openMultipleURLs(data[index].urls)}}
+              <TbExternalLink
+                className={`justify-right mr-2 pr-2 text-3xl text-black duration-300 hover:text-gray-500 ${index === selectedItem ? "text-white" : ""}`}
+                onClick={() => {
+                  openMultipleURLs(data[index].urls);
+                }}
               />
             </div>
           ))}
@@ -72,20 +74,20 @@ const Sidebar = ({ data }) => {
       </div>
       <div className="mb-24">
         <form onSubmit={addCategory}>
-            <div className="flex flex-row">
-                <button 
-                  className="mb-4 mr-2 w-[2.5vw] rounded bg-gray-800 text-3xl text-white duration-300 hover:scale-95"
-                  type="submit"
-                >
-                    +
-                </button>
-                <Input
-                    type="text"
-                    id="addCategory"
-                    placeholder="+ Add a workspace"
-                    className="w-[15vw] mb-4 border-black"
-                />
-            </div>
+          <div className="flex flex-row">
+            <button
+              className="mb-4 mr-2 w-[2.5vw] rounded bg-gray-800 text-3xl text-white duration-300 hover:scale-95"
+              type="submit"
+            >
+              +
+            </button>
+            <Input
+              type="text"
+              id="addCategory"
+              placeholder="+ Add a workspace"
+              className="mb-4 w-[15vw] border-black"
+            />
+          </div>
         </form>
         <div className="mb-4 h-1 w-full place-self-center rounded-full bg-gray-300"></div>
         <div className="flex">
