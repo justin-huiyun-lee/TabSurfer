@@ -6,13 +6,13 @@ const Sidebar = () => {
   return (
     <div className="flex h-screen w-1/4 flex-col justify-between border-r-2 bg-[#ededed] p-4">
       <div className="flex flex-col">
-        <div className="mt-24 flex items-center">
+        <div className="flex items-center">
           <Input placeholder="Search" />
           <BsSearch className="ml-3 text-2xl duration-300 hover:scale-95" />
         </div>
         <div className="mt-4 h-1 w-full place-self-center rounded-full bg-gray-300"></div>
       </div>
-      <div>
+      <div className="mb-24">
         <div className="mb-4 h-1 w-full place-self-center rounded-full bg-gray-300"></div>
         <div className="flex">
           <Skeleton className="h-12 min-w-12 rounded-full bg-gray-300" />
