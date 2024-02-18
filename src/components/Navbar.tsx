@@ -1,28 +1,28 @@
 import Image from "next/image";
 import Logo from "../../public/images/tabsurfer-logo.png";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="w-screen h-24 bg-white border-b-2 flex justify-between items-center font">
-      <div className="pl-12">
-        <Image src={Logo.src} alt="Logo" width={80} height={80} />
+    <div className="font flex h-24 w-screen items-center justify-between border-b-2 bg-white">
+      <div className="ml-12 cursor-pointer duration-300 hover:rotate-6 hover:scale-95">
+        <Image
+          src={Logo.src}
+          alt="Logo"
+          width={1000}
+          height={1000}
+          className="h-16 w-16"
+        />
       </div>
       <div>
-        <h1 id="title">
+        <h1 className="cursor-pointer text-3xl font-light duration-300 hover:scale-105">
           TabSurfer
         </h1>
       </div>
-      <div className="pr-12">
-        <button class="cssbuttons-io">
-          <span>
-            <path d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
-              fill="currentColor"
-            ></path>
-            Login
-          </span>
-        </button>
+      <div className="mr-12 cursor-pointer rounded-md bg-black px-4 py-3 font-bold text-white duration-300 hover:scale-105">
+        <Link href="/login" className="">
+          Login
+        </Link>
       </div>
     </div>
   );
