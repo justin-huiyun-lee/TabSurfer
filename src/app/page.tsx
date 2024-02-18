@@ -99,12 +99,14 @@ export default function Home() {
 
   function addCategory(e) {
     e.preventDefault();
+    
     const newWorkspace = {
       title: e.target.elements.addCategory.value,
       urls: [],
       active: false,
     };
     const newData = [...data, newWorkspace];
+    document.getElementById("addCategory").value = "";
     setData(newData);
     Workspaces(data);
   }
