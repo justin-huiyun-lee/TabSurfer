@@ -2,8 +2,16 @@
 import { Input } from "./ui/input";
 import React, { useState, useEffect } from "react";
 import { TbExternalLink } from "react-icons/tb";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { AiFillYoutube } from "react-icons/ai";
 
 const Workspaces = ({ data }) => {
+  const [url, setUrl] = useState("");
+
+  const handleUrlChange = (e) => {
+    setUrl(e.target.value);
+  };
+
   let activeIndex = 0;
 
   // Find the active workspace and update the index
@@ -26,6 +34,12 @@ const Workspaces = ({ data }) => {
     e.preventDefault();
     
     data[activeIndex].urls.push(url);
+    setUrl("");
+  }
+
+  function deleteElement(e, index: number) {
+    e.preventDefault();
+    data[index].urls.pop(url);
   }
 
   return (
@@ -53,9 +67,15 @@ const Workspaces = ({ data }) => {
                 {url}
               </h3>
               <TbExternalLink
-                className="justify-right mr-2 pr-2 text-3xl text-gray-700 duration-300 hover:text-black"
+                className="justify-right mr-2 cursor-pointer pr-2 text-3xl text-gray-700 duration-300 hover:text-black"
                 onClick={() => {
                   window.open(url);
+                }}
+              />
+              <FaRegTrashCan
+                className="mr-2 cursor-pointer pr-2 text-3xl text-red-400 duration-300 hover:text-red-800"
+                onClick={(e) => {
+                  deleteElement(e, index);
                 }}
               />
             </div>
@@ -68,6 +88,7 @@ const Workspaces = ({ data }) => {
           <Input
             type="text"
             placeholder="+ Add a url"
+            onChange={handleUrlChange}
             className="ml-12 w-[70vw] border-black"
           />
           <button
