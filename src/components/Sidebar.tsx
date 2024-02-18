@@ -8,7 +8,7 @@ import Workspaces from "./Workspaces";
 import { UserButton } from "@clerk/nextjs";
 
 const Sidebar = ({ data }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(0);
   const [updatedData, setUpdatedData] = useState(data);
 
   const handleItemClick = (index) => {
@@ -36,7 +36,7 @@ const Sidebar = ({ data }) => {
           {updatedData.map((item, index) => (
             <div
               key={index}
-              className={`mb-2 flex cursor-pointer items-center justify-between rounded-md py-2 pl-4 font-medium text-gray-500 duration-150 hover:bg-gray-900 hover:text-white ${index === selectedItem ? "bg-gray-800 text-gray-50 hover:bg-gray-700 hover:text-white" : "bg-gray-50"}`}
+              className={`mb-2 flex cursor-pointer items-center justify-between rounded-md py-2 pl-4 font-medium text-black duration-150 hover:bg-gray-900 hover:text-white ${index === selectedItem ? "bg-gray-800 text-gray-50 hover:bg-gray-700 hover:text-white" : "bg-gray-50"}`}
               onClick={() => handleItemClick(index)}
             >
               {item.title}
@@ -45,7 +45,6 @@ const Sidebar = ({ data }) => {
           ))}
         </div>
       </div>
-
       <div className="mb-24">
         <button className="mb-4 w-full rounded bg-gray-300 text-3xl text-white duration-300 hover:scale-95">
           +
