@@ -5,13 +5,13 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <div className="font flex h-24 w-screen items-center justify-between border-b-2 bg-white">
-      <div className="ml-12 cursor-pointer duration-300 hover:rotate-6 hover:scale-95">
+      <div className="ml-12 cursor-pointer duration-300 hover:scale-105">
         <Image
           src={Logo.src}
           alt="Logo"
           width={1000}
           height={1000}
-          className="h-16 w-16"
+          className="h-16 w-16 grayscale duration-300 hover:filter-none"
         />
       </div>
       <div>
@@ -19,9 +19,18 @@ const Navbar = () => {
           TabSurfer
         </h1>
       </div>
-      <div className="mr-12 cursor-pointer rounded-md bg-black px-4 py-3 font-bold text-white duration-300 hover:scale-105">
-        <Link href="/login" >
-          Login
+      <div className="flex flex-row">
+        <Link
+          href="/login"
+          className="mr-5 cursor-pointer rounded-md border-2 border-black px-4 py-3 font-bold text-black duration-300 hover:bg-black hover:text-white"
+        >
+          Log In
+        </Link>
+        <Link
+          href="/register"
+          className="mr-5 cursor-pointer rounded-md border-2 border-black px-4 py-3 font-bold text-black duration-300 hover:bg-black hover:text-white"
+        >
+          Sign Up
         </Link>
       </div>
     </div>

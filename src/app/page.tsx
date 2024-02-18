@@ -7,10 +7,26 @@ import Head from "next/head";
 let active = "Math";
 
 let data = [
-  { title: "Math", urls: ["https://www.khanacademy.org/math"], active: true},
-  { title: "Science", urls: ["https://www.khanacademy.org/science"], active: false},
-  { title: "Computer Science", urls: ["https://www.khanacademy.org/computing"], active: false},
-  { title: "Arts and Humanities", urls: ["https://www.khanacademy.org/humanities"], active: false}
+  {
+    title: "Math",
+    urls: ["https://www.khanacademy.org/math"],
+    active: true,
+  },
+  {
+    title: "Science",
+    urls: ["https://www.khanacademy.org/science"],
+    active: false,
+  },
+  {
+    title: "Computer Science",
+    urls: ["https://www.khanacademy.org/computing"],
+    active: false,
+  },
+  {
+    title: "Arts and Humanities",
+    urls: ["https://www.khanacademy.org/humanities"],
+    active: false,
+  },
 ];
 
 export default function Home() {
@@ -18,17 +34,11 @@ export default function Home() {
     <>
       <Head>
         <title>TabSurfer</title>
-        <link rel="icon" href={Logo} />
       </Head>
       <div>
         <Navbar />
-        <Sidebar 
-          data={data}
-          active={active}
-        />
-        <Workspaces 
-          data={data}
-        />
+        <Sidebar data={data} active={active} />
+        <Workspaces data={data} />
       </div>
     </>
   );

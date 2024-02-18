@@ -1,10 +1,11 @@
-"use client"
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 import { Input } from "./ui/input";
 import { BsSearch } from "react-icons/bs";
 import { Skeleton } from "./ui/skeleton";
 import { TbExternalLink } from "react-icons/tb";
-import WorkspaceUpdateIndex from './Workspaces';
+import Workspaces from "./Workspaces";
+import { UserButton } from "@clerk/nextjs";
 
 const Sidebar = ({ data }) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -16,11 +17,11 @@ const Sidebar = ({ data }) => {
     // Update the 'active' status of items
     const newData = updatedData.map((item, i) => ({
       ...item,
-      active: i === index ? true : false
+      active: i === index ? true : false,
     }));
     // Update the state with the new data
     setUpdatedData(newData);
-    WorkspaceUpdateIndex(index);
+    Workspaces(data, index);
   };
 
   return (
@@ -28,27 +29,27 @@ const Sidebar = ({ data }) => {
       <div className="flex flex-col">
         <div className="flex items-center">
           <Input placeholder="Search" />
-          <BsSearch className="ml-3 text-2xl duration-300 hover:scale-95" />
+          <BsSearch className="ml-3 cursor-pointer text-2xl duration-300 hover:scale-90" />
         </div>
         <div className="mt-4 h-1 w-full place-self-center rounded-full bg-gray-300"></div>
-        <div className="flex flex-col align-top mt-4">
-          {
-            updatedData.map((item, index) => (            
-              <div 
-                key={index} 
-                className={`pl-4 rounded-md mb-2 font-medium py-2 hover:bg-gray-900 hover:text-white duration-100 cursor-pointer flex justify-between items-center text-gray-500 ${index === selectedItem ? 'bg-gray-800 text-gray-50 hover:bg-gray-700 hover:text-white' : 'bg-gray-50'}`} 
-                onClick={() => handleItemClick(index)}
-              >
-                {item.title}
-                <TbExternalLink className = "text-3xl pr-2 text-gray-500 hover:text-gray-50 duration-300" />
-              </div>
-            ))
-          }
+        <div className="mt-4 flex flex-col align-top">
+          {updatedData.map((item, index) => (
+            <div
+              key={index}
+              className={`mb-2 flex cursor-pointer items-center justify-between rounded-md py-2 pl-4 font-medium text-gray-500 duration-150 hover:bg-gray-900 hover:text-white ${index === selectedItem ? "bg-gray-800 text-gray-50 hover:bg-gray-700 hover:text-white" : "bg-gray-50"}`}
+              onClick={() => handleItemClick(index)}
+            >
+              {item.title}
+              <TbExternalLink className="pr-2 text-3xl text-gray-500 duration-300 hover:text-gray-50" />
+            </div>
+          ))}
         </div>
       </div>
-      
+
       <div className="mb-24">
-        <button className = "text-3xl mb-4 w-full bg-gray-300 duration-300 text-white hover:scale-95 duration-300 rounded">+</button>
+        <button className="mb-4 w-full rounded bg-gray-300 text-3xl text-white duration-300 hover:scale-95">
+          +
+        </button>
         <div className="mb-4 h-1 w-full place-self-center rounded-full bg-gray-300"></div>
         <div className="flex">
           <Skeleton className="h-12 min-w-12 rounded-full bg-gray-300" />
@@ -57,6 +58,9 @@ const Sidebar = ({ data }) => {
             <Skeleton className="h-1/3 w-[40%] rounded-full bg-gray-300" />
           </div>
         </div>
+      </div>
+      <div className="absolute bottom-6 left-6 scale-150">
+        <UserButton />
       </div>
     </div>
   );
