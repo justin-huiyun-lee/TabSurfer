@@ -24,6 +24,7 @@ const Workspaces = ({ data }) => {
 
   function formSubmit(e) {
     e.preventDefault();
+    
     data[activeIndex].urls.push(url);
   }
 
